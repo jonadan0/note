@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoteApp</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+</head>
+<body>
+    <div class="notion-app">
+        <div class="notion-sidebar">
+            <ul>
+                <li id="nav-notes" class="active">Notes</li>
+                <li id="nav-tasks">Tasks</li>
+                <li id="nav-calendar">Calendar</li>
+            </ul>
+            <div id="auth-section">
+                <a href="login.html"><button id="login-btn">Login</button></a>
+                <a href="signup.html"><button id="signup-btn">Sign Up</button></a>
+                <button id="logout-btn" class="hidden">Logout</button>
+            </div>
+        </div>
+        <div class="notion-main">
+            <div class="notion-header">
+                <h1 id="section-title">Notes</h1>
+            </div>
+            <div class="notion-section" id="notes-section">
+                <div id="notes-list"></div>
+                <div id="note-editor" class="hidden">
+                    <input type="hidden" id="note-id">
+                    <input type="text" id="note-title" placeholder="Title" required>
+                    <textarea id="note-content" placeholder="Write your note here..." required></textarea>
+                    <div>
+                        <button id="save-note">Save</button>
+                        <button id="cancel-note">Cancel</button>
+                        <button id="delete-note" class="hidden">Delete</button>
+                    </div>
+                </div>
+                <button id="new-note" class="hidden">New Note</button>
+            </div>
+            <div class="notion-section hidden" id="tasks-section">
+                <h2>Tasks</h2>
+                <div id="tasks-list"></div>
+                <input type="text" id="new-task-input" placeholder="New task">
+                <button id="add-task">Add Task</button>
+            </div>
+            <div class="notion-section hidden" id="calendar-section">
+                <h2>Calendar</h2>
+                <div id="calendar"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBll7KN5_dztD-uSGbQwKTZ79E9ZMVp_9U",
+            authDomain: "noth-9ff09.firebaseapp.com",
+            projectId: "noth-9ff09",
+            storageBucket: "noth-9ff09.appspot.com",
+            messagingSenderId: "111218786280",
+            appId: "1:111218786280:web:7e2dc28424cbefc82bae5d",
+            measurementId: "G-XER19X4TJL"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginBtn = document.getElementById('login-btn');
+            const signupBtn = document.getElementById('signup-btn');
+            const logoutBtn = document.getElementById('logout-btn');
+
+            loginBtn.addEventListener('click', function() {
+                window.location.href = 'login.html';
+            });
+
+            signupBtn.addEventListener('click', function() {
+                window.location.href = 'signup.html';
+            });
+
+            logoutBtn.addEventListener('click', function() {
+                auth.signOut()
+                    .then(() => {
+                        console.log('User logged out');
+                    })
+                    .catch(error => console.error('Error logging out:', error));
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
