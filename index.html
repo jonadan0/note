@@ -9,13 +9,36 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
     <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+        <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .content {
+            flex: 1;
+        }
+        .ad-container {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background-color: #f1f1f1; 
+            z-index: 1000; 
+        }
+        .ad-wrapper {
+            margin: 0 auto;
+            max-width: 320px;
+        }
+        .kakao_ad_area {
+            display: block;
+            width: 100%; 
+        }
+    </style>
 </head>
 <body>
-    <ins class="kakao_ad_area" style="display:none;"
-data-ad-unit = "DAN-StaciWBusTdCPwVh"
-data-ad-width = "320"
-data-ad-height = "100"></ins>
-
     <div class="notion-app">
         <div class="notion-sidebar">
             <ul>
@@ -59,6 +82,17 @@ data-ad-height = "100"></ins>
             </div>
         </div>
     </div>
+    <div class="ad-container">
+        <div class="ad-wrapper">
+            <ins class="kakao_ad_area" 
+                 data-ad-unit="DAN-StaciWBusTdCPwVh"
+                 data-ad-width="320"
+                 data-ad-height="100"></ins>
+        </div>
+    </div>
+    <script type="text/javascript">
+        kakao_adfit.load();
+    </script>
     <script>
         const firebaseConfig = {
             apiKey: "AIzaSyBll7KN5_dztD-uSGbQwKTZ79E9ZMVp_9U",
