@@ -224,3 +224,39 @@ auth.onAuthStateChanged(user => {
         notesList.innerHTML = '';
     }
 });
+ <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBll7KN5_dztD-uSGbQwKTZ79E9ZMVp_9U",
+            authDomain: "noth-9ff09.firebaseapp.com",
+            projectId: "noth-9ff09",
+            storageBucket: "noth-9ff09.appspot.com",
+            messagingSenderId: "111218786280",
+            appId: "1:111218786280:web:7e2dc28424cbefc82bae5d",
+            measurementId: "G-XER19X4TJL"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginBtn = document.getElementById('login-btn');
+            const signupBtn = document.getElementById('signup-btn');
+            const logoutBtn = document.getElementById('logout-btn');
+
+            loginBtn.addEventListener('click', function() {
+                window.location.href = 'login.html';
+            });
+
+            signupBtn.addEventListener('click', function() {
+                window.location.href = 'signup.html';
+            });
+
+            logoutBtn.addEventListener('click', function() {
+                auth.signOut()
+                    .then(() => {
+                        console.log('User logged out');
+                    })
+                    .catch(error => console.error('Error logging out:', error));
+            });
+        });
+    </script>
