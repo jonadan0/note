@@ -77,7 +77,9 @@ body {
 .notion-section:not(.hidden) {
     display: block;
 }
-
+ins.kakao_ad_area {
+    display: block; /* 또는 inline-block 등 적절한 값으로 설정 */
+}
 .note,
 .task-item {
     background-color: #ffffff;
