@@ -79,6 +79,7 @@ body {
 }
 ins.kakao_ad_area {
     display: block; /* 또는 inline-block 등 적절한 값으로 설정 */
+    margin-top: 50%;
 }
 .note,
 .task-item {
